@@ -1,4 +1,4 @@
-package com.zhaojj11.template.constants;
+package com.zhaojj11.template.common.constants;
 
 /**
  * @author zhaojj11

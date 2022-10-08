@@ -1,4 +1,4 @@
-package com.zhaojj11.template.enums;
+package com.zhaojj11.template.common.enums;
 
 /**
  * @author zhaojj11

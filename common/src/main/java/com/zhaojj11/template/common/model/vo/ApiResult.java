@@ -1,7 +1,7 @@
-package com.zhaojj11.template.model.vo;
+package com.zhaojj11.template.common.model.vo;
 
-import com.zhaojj11.template.constants.StringConstant;
-import com.zhaojj11.template.enums.ApiResultCodeEnum;
+import com.zhaojj11.template.common.constants.StringConstant;
+import com.zhaojj11.template.common.enums.ApiResultCodeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,14 +22,14 @@ public class ApiResult<T> implements Serializable {
     private T data;
 
     public static <T> ApiResult<T> ok(){
-        return new ApiResult<T>(true, ApiResultCodeEnum.SUCCESS.getCode(), StringConstant.OK, null);
+        return new ApiResult<>(true, ApiResultCodeEnum.SUCCESS.getCode(), StringConstant.OK, null);
     }
 
     public static <T> ApiResult<T> ok(T data){
-        return new ApiResult<T>(true, ApiResultCodeEnum.SUCCESS.getCode(), StringConstant.OK, data);
+        return new ApiResult<>(true, ApiResultCodeEnum.SUCCESS.getCode(), StringConstant.OK, data);
     }
 
     public static <T> ApiResult<T> fail(String msg){
-        return new ApiResult<T>(false, ApiResultCodeEnum.FAILED.getCode(), msg, null);
+        return new ApiResult<>(false, ApiResultCodeEnum.FAILED.getCode(), msg, null);
     }
 }
