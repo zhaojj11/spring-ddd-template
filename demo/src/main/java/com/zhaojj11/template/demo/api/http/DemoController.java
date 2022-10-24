@@ -23,6 +23,11 @@ public class DemoController {
         return ApiResult.ok(Map.of("msg", Constants.OK));
     }
 
+    @GetMapping("/test/return")
+    public Map<String, String> testReturnValue() {
+        return Map.of("msg", Constants.OK);
+    }
+
     @GetMapping("/test/exception")
     public ApiResult<Object> testException() {
         int i = 1 / 0;
