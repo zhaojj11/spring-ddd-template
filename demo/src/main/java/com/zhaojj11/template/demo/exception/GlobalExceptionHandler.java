@@ -26,6 +26,15 @@ public class GlobalExceptionHandler {
         return ApiResult.fail("算数错误");
     }
 
+    @ExceptionHandler({BizException.class})
+    public ApiResult<Object> bizException(BizException e) {
+        log.error("BizException:", e);
+        if (e.getCode() != null) {
+            return ApiResult.fail(e.getCode(), e.getMessage());
+        }
+        return ApiResult.fail(e.getMessage());
+    }
+
     @ExceptionHandler({BaseException.class})
     public ApiResult<Object> baseException(BaseException e) {
         log.error("BaseException:", e);

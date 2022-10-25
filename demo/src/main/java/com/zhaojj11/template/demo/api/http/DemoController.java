@@ -2,9 +2,10 @@ package com.zhaojj11.template.demo.api.http;
 
 import com.zhaojj11.template.common.model.vo.ApiResult;
 import com.zhaojj11.template.demo.common.constants.Constants;
-import com.zhaojj11.template.demo.exception.BaseException;
+import com.zhaojj11.template.demo.exception.BizException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,21 +29,12 @@ public class DemoController {
         return Map.of("msg", Constants.OK);
     }
 
-    @GetMapping("/test/exception")
-    public ApiResult<Object> testException() {
-        int i = 1 / 0;
-        log.info(String.valueOf(i));
-        return ApiResult.ok(Map.of("msg", Constants.OK));
-    }
-
-    @GetMapping("/test/base-exception")
-    public ApiResult<Object> testCatchException() {
-        try {
-            int i = 1 / 0;
-            log.info(String.valueOf(i));
-        } catch (Exception e) {
-            throw new BaseException("base exception");
+    @GetMapping("/test/exception/{key}")
+    public ApiResult<Object> testException(@PathVariable Integer key) {
+        if (key == 1) {
+            throw new BizException(4000, "biz exception");
         }
-        return ApiResult.ok(Map.of("msg", Constants.OK));
+        log.info(String.valueOf(key));
+        return ApiResult.ok(Map.of("msg", key));
     }
 }
