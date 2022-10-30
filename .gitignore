@@ -33,3 +33,5 @@ build/
 .vscode/
 
 **/resources/application-**.yaml
+!**/resources/application-**.sample.yaml
+
