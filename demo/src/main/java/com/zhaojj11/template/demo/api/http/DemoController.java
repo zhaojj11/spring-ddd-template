@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -36,5 +37,10 @@ public class DemoController {
         }
         log.info(String.valueOf(key));
         return ApiResult.ok(Map.of("msg", key));
+    }
+
+    @GetMapping("/test/timeFormat")
+    public Map<String, Date> testTimeFormat() {
+        return Map.of("time", new Date());
     }
 }
