@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
-@ActiveProfiles(value = "dev")
+@ActiveProfiles(value = "test")
 @MapperScan("com.zhaojj11.template.demo.domain")
 public class UserDaoTest {
 
@@ -18,9 +21,9 @@ public class UserDaoTest {
     private UserDao userDao;
 
     @Test
-    void testFindById() {
-        User user = userDao.getById(1);
-        assertNotNull(user);
-        System.out.println(user);
+    void testListByAge() {
+        List<User> users = userDao.listByAge(18);
+        assertNotNull(users);
+        assertEquals(1, users.size());
     }
 }
